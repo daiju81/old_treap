@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
 
             // start追記
             $table->string('profile_image')->nullable()->comment('プロフィール画像');
-            $table->string('oneword');
-            $table->string('identification_id')->unique();
+            $table->string('oneword')->nullable();
+            $table->string('identification_id')->unique()->nullable();
             // end
 
 
