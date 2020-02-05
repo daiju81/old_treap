@@ -14,6 +14,9 @@ class PostsTableSeeder extends Seeder
     {
         //
         DB::table('posts')->delete();
-        factory(App\Post::class, 20)->create();
+        $user = App\User::first();
+        factory(App\Post::class, 20)->create([
+          'user_id' => $user->id,
+        ]);
     }
 }
