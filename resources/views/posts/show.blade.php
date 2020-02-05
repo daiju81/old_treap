@@ -8,9 +8,9 @@
 </head>
 <body>
   <h1>{{ $post->text }}</h1>
-  <div>
-
-  </div>
+  {!! Form::open(['method' => 'DELETE', 'url' => ['posts', $post->id]]) !!}
+      {!! Form::submit('削除') !!}
+  {!! Form::close() !!}
   <a href="{{ route('posts.index') }}">一覧へ戻る</a>
 </body>
 </html>
