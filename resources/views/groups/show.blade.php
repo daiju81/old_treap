@@ -76,9 +76,19 @@
 
                       <p>グループ</p>
 
-                      <h1>グループ名前</h1>
+                      <h1>グループ名</h1>
                       <p>{{ $group->name }}</p>
                       <p>メンバー</p>
+
+                      @foreach($user_name as $user)
+                        <div class="row py-2 border-bottom text-center">
+                            <div class="col-sm-4">
+
+                              <a href="{{ url('groups', $group->id)}}">{{ $user->name }}</a>
+                            </div>
+                        </div>
+                      @endforeach
+
 
                         <!-- <a href="{{ url('/groups/search') }}">Group</a> -->
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Group;
+use App\GroupUser;
+use App\User;
 
 class GroupController extends Controller
 {
@@ -29,7 +31,11 @@ class GroupController extends Controller
     }
     public function show($id) {
        $group = Group::findOrFail($id);
-      return view('groups.show', compact('group'));
+       $group_member = GroupUser::where('group_id', $group->id)->get();
+       foreach($group_member as $key => $group) {
+        $user_name[$key] = User::findOrFail($group->user_id);
+       }
+      return view('groups.show', compact('group', 'user_name'));
     }
     public function destroy($id) {
       $post = Post::findOrFail($id);

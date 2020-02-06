@@ -20,6 +20,10 @@ class WelcomeController extends Controller
       }
       // dd($groups);
       // dd($groupdetails[0]);
-      return view('top', compact('groupdetails'));
+      if(empty($groupdetails)) {
+        return view('top');
+      } else {
+        return view('top', compact('groupdetails'));
+      }
     }
 }
