@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/posts', 'PostController');
+Route::get('/groups/search', function() {
+  return view('groups.search');
+});
+Route::get('Search', 'SearchController@index')->name('search');
+Route::get('/', 'WelcomeController@index')->name('top');
+Route::resource('/groups', 'GroupController');

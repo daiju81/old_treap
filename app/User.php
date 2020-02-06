@@ -38,6 +38,12 @@ class User extends Authenticatable
     ];
 
     public function posts() {
-      return $this->hasMany('App\Post');
+      return $this->belongsToMany('App\Group')->using('App\GroupUser');
+    }
+    // public function groups() {
+    //   return $this->belongsToMany(Group::class, 'group_user')->using(GroupUser::class)->withPivot(['role_id']);
+    // }
+    public function groups() {
+      return $this->belongsToMany('App\Group');
     }
 }
