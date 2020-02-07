@@ -23,6 +23,7 @@ class WelcomeController extends Controller
       if(empty($groupdetails)) {
         return view('top');
       } else {
+        // dd($groupdetails);
         return view('top', compact('groupdetails'));
       }
     }

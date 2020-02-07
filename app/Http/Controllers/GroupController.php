@@ -6,25 +6,36 @@ use Illuminate\Http\Request;
 use App\Group;
 use App\GroupUser;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
     //
-    public function create(Request $request) {
-      dd($request);
-      $data = $request->id;
-      return redirect('groups/store', compact('data'));
+    public function create() {
+      return view('groups.create');
+      // return redirect('groups/store', compact('data'));
     }
     public function store(Request $request) {
-      dd($request);
-      $inputs = \Request::all();
-      $post  = new Post();
-      $post->text = $request->text;
-      $post->post_date = Carbon::today();
-      $post->user_id = Auth::user()->id;
-      $post->save();
-      return redirect('posts');
+      // dd($request->group_name);
+      // $inputs = \Request::all();
+      // dd($inputs);
+      $group  = new Group();
+      $group->name = $request->group_name;
+      // dd(Auth::id());
+      $group->host_user_id = Auth::id();
+      // dd($request);
+      $group->save();
 
+      $groupuser = new GroupUser();
+      $groupuser->group_id = $group->id;
+      $groupuser->user_id = $group->host_user_id;
+
+      $groupuser->save();
+
+      // return redirect('group/{{$group->id}}');
+      // dd($group->id);
+
+      return redirect()->route('groups.show', [$group->id]);
     }
     public function index() {
       return view('posts.index');
@@ -32,10 +43,17 @@ class GroupController extends Controller
     public function show($id) {
        $group = Group::findOrFail($id);
        $group_member = GroupUser::where('group_id', $group->id)->get();
-       foreach($group_member as $key => $group) {
-        $user_name[$key] = User::findOrFail($group->user_id);
+      //  dd($group->id);
+      //  dd($group_member);
+       foreach($group_member as $key => $group_member) {
+        $users_name[$key] = User::findOrFail($group_member->user_id);
        }
-      return view('groups.show', compact('group', 'user_name'));
+       if(isset($group_member)) {
+         return view('groups.show', compact('group'));
+       } else {
+         return view('groups.show', compact('group', 'users_name'));
+       }
+      // return redirect()->route('groups.show', [$group->id]);
     }
     public function destroy($id) {
       $post = Post::findOrFail($id);

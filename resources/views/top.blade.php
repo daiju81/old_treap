@@ -74,7 +74,7 @@
                         <!-- <a href="{{ url('/groups') }}">Group</a> -->
                       </div>
 
-                      <p>グループ作成</p>
+                      <a href="groups/create">グループ作成</a>
                       <h2>グループ一覧</h2>
 
 

@@ -13,4 +13,5 @@ class GroupUser extends Model
     // public function role() {
     //   return $this->belongsTo(Role::class);
     // }
+    public $timestamps = false;
 }

@@ -25,3 +25,4 @@ Route::get('/groups/search', function() {
 Route::get('Search', 'SearchController@index')->name('search');
 Route::get('/', 'WelcomeController@index')->name('top');
 Route::resource('/groups', 'GroupController');
+Route::resource('/groupmembers', 'GroupMemberController');
