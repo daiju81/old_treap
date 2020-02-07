@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/posts', 'PostController');
+Route::get('/posts/{group_id}', 'PostController@index');
+// Route::get('/posts/create/{group_id}', 'PostController@create');
 Route::get('/groups/search', function() {
   return view('groups.search');
 });

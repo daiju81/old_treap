@@ -70,7 +70,12 @@
                     @auth
                       <div class="top-right links">
                         <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/posts/create') }}">Post</a>
+                        <!-- <a href="{{ url('/posts/create') }}">Post</a> -->
+                        <a href="" onclick="document.form3.submit();return false;">POST</a>
+                        <!-- <form name="form3" method="get" action="/posts/create/{{$group->id}}"> -->
+                        <form name="form3" method="get" action="/posts/create">
+                          <input type=hidden name="group_id" value="{{ $group->id }}">
+                        </form>
                         <!-- <a href="{{ url('/groups') }}">Group</a> -->
                       </div>
 

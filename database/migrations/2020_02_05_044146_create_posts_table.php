@@ -21,8 +21,10 @@ class CreatePostsTable extends Migration
             $table->dateTime('post_date');
             // $table->bigIncrements('group_id');
             $table->string('text');
+            $table->unsignedBigInteger('group_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');
             // end
 
             $table->timestamps();

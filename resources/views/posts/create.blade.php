@@ -14,6 +14,7 @@
  投稿メッセージ
   {!! Form::text('text',null) !!}
   </div>
+  <input type=hidden name="group_id" value="{{ $group_id }}">
 
   <!-- <div>
   画像:
