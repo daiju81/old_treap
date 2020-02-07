@@ -22,7 +22,11 @@ Route::resource('/posts', 'PostController');
 Route::get('/groups/search', function() {
   return view('groups.search');
 });
+Route::post('/groups/search', function() {
+  return view('groups.search');
+});
 Route::get('Search', 'SearchController@index')->name('search');
 Route::get('/', 'WelcomeController@index')->name('top');
 Route::resource('/groups', 'GroupController');
-Route::resource('/groupmembers', 'GroupMemberController');
+Route::get('/groupmembers/add', 'GroupMemberController@add');
+Route::get('/groupmembers/add/{group_id}', 'GroupMemberController@store');

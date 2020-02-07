@@ -69,7 +69,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/posts/create') }}">Post</a>
+                        <!-- <a href="{{ url('/posts/create') }}">Post</a> -->
                         <a href="{{ url('/groups') }}">Group</a>
                         <!-- <a href="{{ url('/groups/search') }}">Group</a> -->
                     @else

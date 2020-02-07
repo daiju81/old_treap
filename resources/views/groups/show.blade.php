@@ -78,7 +78,23 @@
 
                       <h1>グループ名</h1>
                       <p>{{ $group->name }}</p>
-                      <a href="/groupmembers/create">招待</a>
+                      <?php $group_id = $group->id ?>
+                      <!-- <a href="/Search">招待</a> -->
+
+
+                      <a href="" onclick="document.form1.submit();return false;">招待</a>
+                      <form name="form1" method="get" action="/Search">
+                      <input type=hidden name="group_id" value="{{$group_id }}">
+                      </form>
+
+
+                      <!-- <a href="" onclick="document.form1.submit(); return false;">招待</a>
+                      <form name="form1" method="get" action="/Search">
+                        <input type="hidden" name="group_id" value="{{ $group_id }}">
+                      </from> -->
+
+
+
                       <p>メンバー</p>
 
                       @if(!empty($users_name))

@@ -49,9 +49,9 @@ class GroupController extends Controller
         $users_name[$key] = User::findOrFail($group_member->user_id);
        }
        if(isset($group_member)) {
-         return view('groups.show', compact('group'));
-       } else {
          return view('groups.show', compact('group', 'users_name'));
+        } else {
+          return view('groups.show', compact('group'));
        }
       // return redirect()->route('groups.show', [$group->id]);
     }
