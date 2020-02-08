@@ -7,6 +7,10 @@ use App\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Session;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+
+
 
 class PostController extends Controller
 {
@@ -25,31 +29,40 @@ class PostController extends Controller
       $post->user_id = Auth::user()->id;
       $post->group_id = \Request::input('group_id');
       $post->save();
-      // $posts = Post::where('group_id', $post->group_id);
       $posts = Post::where('group_id', $post->group_id)->get();
 
-      // return redirect('posts');
-      // dd($post->group_id);
-      // return redirect()->route('posts/', [$post->group_id]);
-      // return redirect('posts', compact('posts'));
-      // return redirect()->action('PostController@index', ['group_id'=>$post->$group_id]);
-      // return redirect('posts');
-      // return redirect(ro ute('posts', ['posts'=>$posts]));
 
-      // Session::put('group_id', $post->group_id);
-      return view('posts.index', compact('posts'));
+      return view('posts.store.index', compact('posts'));
 
     }
     public function index(Request $request) {
+
       // if (Session::has('group_id')) {
         // $group_id = session()->get('group_id');
         // dd(session('group_id'));
       // }
       // dd($group_id);
       // dd('ja');
-      $posts = Post::where('group_id', $group_id);
+
+      if(!empty($group_id)) {
+        $posts = Post::where('group_id', $group_id)->get();
+        $count = DB::table('posts')->where('group_id', $group_id)->count();
+      } else {
+        $group_id = $_GET['group_id'];
+        $posts = Post::where('group_id', $group_id)->get();
+        $count = DB::table('posts')->where('group_id', $group_id)->count();
+      }
+      $posts = Post::where('group_id', $group_id)->get();
+
+      if($count==0) {
+        return view('posts.index', compact('count'));
+
+      }
+        return view('posts.index', compact('posts'));
+
+
       // return view('posts.index', compact('posts'));
-      return view('posts.index', compact('posts'));
+      // return view('posts.index', compact('posts'));
     }
     public function show($id) {
       $post = Post::findOrFail($id);

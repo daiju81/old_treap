@@ -11,6 +11,9 @@
   {!! Form::open(['route'=>'posts.store']) !!}
 
   <div>
+  投稿画像
+  {!! Form::image('image',null) !!}
+
  投稿メッセージ
   {!! Form::text('text',null) !!}
   </div>

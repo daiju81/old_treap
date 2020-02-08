@@ -70,13 +70,19 @@
                     @auth
                       <div class="top-right links">
                         <a href="{{ url('/home') }}">Home</a>
-                        <!-- <a href="{{ url('/posts/create') }}">Post</a> -->
-                        <a href="" onclick="document.form3.submit();return false;">POST</a>
-                        <!-- <form name="form3" method="get" action="/posts/create/{{$group->id}}"> -->
+
+
+                        <!-- <a href="" onclick="document.form5.submit();return false;">投稿一覧</a> -->
+                        <form name="form5" method="get" action="/posts">
+                          <input type=hidden name="group_id" value="{{ $group->id }}">
+                          <input type="submit" value="投稿一覧">
+                        </from>
+
+                        <!-- <a href="" onclick="document.form3.submit();return false;">投稿</a>
                         <form name="form3" method="get" action="/posts/create">
                           <input type=hidden name="group_id" value="{{ $group->id }}">
-                        </form>
-                        <!-- <a href="{{ url('/groups') }}">Group</a> -->
+                        </from> -->
+
                       </div>
 
                       <p>グループ</p>
