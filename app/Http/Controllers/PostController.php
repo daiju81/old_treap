@@ -24,9 +24,9 @@ class PostController extends Controller
     }
     public function store(Request $request) {
       // $image = Image::create(['name' => "imageName", 'post_id'=>"100"]);
+// dd($_POST['group_id']);
 
-
-
+$group_id = $_POST['group_id'];
 
 
       $inputs = \Request::all();
@@ -79,7 +79,13 @@ class PostController extends Controller
       // }
 
 
-      return view('posts.store.index', compact('posts'));
+      foreach($posts as $post) {
+        $searchpost[] = Image::where('post_id', $post->id)->get();
+      }
+      return view('posts.store.index', compact('posts', 'searchpost'));
+
+
+      // return view('posts.store.index', compact('posts'));
 
     }
     public function index(Request $request) {
