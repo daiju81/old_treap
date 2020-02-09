@@ -122,7 +122,6 @@ class PostController extends Controller
       // foreach($searchpost as $post) {
         // dd($post[0]->id);
       // }
-
       if(isset($searchpost)) {
         return view('posts.index', compact('count'));
 

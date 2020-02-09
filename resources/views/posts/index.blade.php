@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-{{ $group_id = $_GET['group_id'] }}
+  <a href="{{ url('/home') }}">Home</a>
 {{$i = 0}}
 @if(!isset($count))
 @if($posts != null)
   @foreach($posts as $post)
+
       <article>
           <h2>
               <a href="{{ url('posts', $post->id) }}">
