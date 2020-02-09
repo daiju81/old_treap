@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 {{ $group_id = $_GET['group_id'] }}
+{{$i = 0}}
 @if(!isset($count))
 @if($posts != null)
   @foreach($posts as $post)
@@ -17,6 +18,13 @@
           </h2>
       </article>
   {{ $group_id = $post->group_id }}
+  @if ($searchpost[$i][0]->name)
+  <img src="{{$searchpost[$i][0]->name}}" alt="">
+  {{ $searchpost[$i][0]->name }}
+  @endif
+{{ $i++ }}
+
+
   @endforeach
 @endif
 @endif

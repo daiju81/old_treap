@@ -8,6 +8,7 @@
 
   @foreach($posts as $post)
       <article>
+      <!-- <img src="" alt=""> -->
           <h2>
               <a href="{{ url('posts', $post->id) }}">
                   {{ $post->text }}

@@ -8,11 +8,14 @@
 </head>
 <body>
 
-  {!! Form::open(['route'=>'posts.store']) !!}
-
+  <!-- {!! Form::open(['route'=>'posts.store']) !!} -->
+  <form action="http://127.0.0.1:8000/posts" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" name="image">
+  @csrf
   <div>
-  投稿画像
-  {!! Form::image('image',null) !!}
+  <label for="image">画像ファイル（複数可）:</label>
+    <!-- <input type="file" class="form-control" name="files[][image]" multiple> -->
+    <input type="file" name="image">
+
 
  投稿メッセージ
   {!! Form::text('text',null) !!}
@@ -26,6 +29,9 @@
 
   {!! Form::submit('送信') !!}
   {!! Form::close() !!}
+
+  </form>
+
 
 </body>
 </html>
