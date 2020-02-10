@@ -30,5 +30,6 @@ Route::post('/groups/search', function() {
 Route::get('Search', 'SearchController@index')->name('search');
 Route::get('/', 'WelcomeController@index')->name('top');
 Route::resource('/groups', 'GroupController');
+Route::get('/groups/done', 'GroupController@done');
 Route::get('/groupmembers/add', 'GroupMemberController@add');
 Route::get('/groupmembers/add/{group_id}', 'GroupMemberController@store');

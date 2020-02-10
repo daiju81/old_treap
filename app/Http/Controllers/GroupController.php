@@ -16,7 +16,7 @@ class GroupController extends Controller
       // return redirect('groups/store', compact('data'));
     }
     public function store(Request $request) {
-      // dd($request->group_name);
+      // dd($request->gproup_name);
       // $inputs = \Request::all();
       // dd($inputs);
       $group  = new Group();
@@ -35,8 +35,13 @@ class GroupController extends Controller
       // return redirect('group/{{$group->id}}');
       // dd($group->id);
 
-      return redirect()->route('groups.show', [$group->id]);
+      return redirect()->route('groups.done', [$group->id]);
     }
+
+    public function done($group_id) {
+
+    }
+
     public function index() {
       return view('posts.index');
     }
