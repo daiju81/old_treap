@@ -1,23 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
+
                         </div>
                     @endif
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+
+<img src="" alt="ファーストビュー">
+
+
+<div class="container">
+  <div class="catchcopy text-center">
+    <p>Treapは仲間との思い出を</p>
+    <p>デジタルフォトアルバムとして</p>
+    <p>記憶に残すサービス</p>
+  </div>
+
+
+
+  <div class="text-center">
+    <button type="submit" class="mx-auto submit text-center btn btn-primary">
+      {{ __('Login') }}
+    </button>
+  </div>
 </div>
+
+
+
 @endsection
