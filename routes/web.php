@@ -28,6 +28,9 @@ Route::post('/groups/search', function() {
   return view('groups.search');
 });
 Route::get('Search', 'SearchController@index')->name('search');
+Route::get('Search/{id}', function($group_id) {
+  return View::make('search.search', compact('group_id'));
+});
 Route::get('/', 'WelcomeController@index')->name('top');
 Route::resource('/groups', 'GroupController');
 Route::get('/groups/done', 'GroupController@done');
