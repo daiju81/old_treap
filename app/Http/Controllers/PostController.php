@@ -25,6 +25,8 @@ class PostController extends Controller
     public function store(Request $request) {
       // $image = Image::create(['name' => "imageName", 'post_id'=>"100"]);
 // dd($_POST['group_id']);
+// dd($request->image); null
+
 
 $group_id = $_POST['group_id'];
 
@@ -40,33 +42,77 @@ $group_id = $_POST['group_id'];
       $post->save();
       $posts = Post::where('group_id', $post->group_id)->get();
 
-      $imagefile = $request->file('image');
 
-      $image = new Image();
-      $image->name = $imagefile->getClientOriginalName();
-      $image->post_id = $post->id;
-      // $image->save();
 
 
 
 // dd($image);
-      $image_name = $imagefile->getRealPath();
-      $image_file = $imagefile->getClientOriginalName();
-      // Cloudinaryへアップロード
-      // dd($image_name);
-      Cloudder::upload($image_name, $image_file);
+    //   $image_name = $imagefile->getRealPath();
+    //   $image_file = $imagefile->getClientOriginalName();
+    //   // Cloudinaryへアップロード
+    //   // dd($image_name);
+    //   Cloudder::upload($image_name, $image_file);
 
-      list($width, $height) = getimagesize($image_name);
-      // 直前にアップロードした画像のユニークIDを取得します。
-      $publicId = Cloudder::getPublicId();
+    //   list($width, $height) = getimagesize($image_name);
+    //   // 直前にアップロードした画像のユニークIDを取得します。
+    //   $publicId = Cloudder::getPublicId();
 
-      $logoUrl = Cloudder::show($publicId, [
-        'width'     => $width,
-        'height'    => $height
-    ]);
+    //   $logoUrl = Cloudder::show($publicId, [
+    //     'width'     => $width,
+    //     'height'    => $height
+    // ]);
 
-    $image->name = $logoUrl;
-    $image->save();
+    // $image->name = $logoUrl;
+    // $image->save();
+
+
+
+
+    $i = 0;
+    $file_sub = 0;
+      $post_id2 = $post->id;
+
+      $test = 0;
+      foreach($request->file()['files'] as $key => $value) {
+        $test++;
+      }
+      // dd( count($request->file()['files'] ));
+
+for($c=0;$c<$test;$c++) {
+  foreach($request->file() as $key => $value) {
+
+    // dd($value[$i]);
+    $image = new Image();
+    $image->post_id = $post_id2;
+
+    if($i==0) {
+      for($a=0;$a<count($value);$a++) {
+
+        for($b=0; $b<$test; $b++) {
+          $image_name[] = $value[$b]['image']->getRealPath();
+          $image_file[] = $value[$b]['image']->getClientOriginalName();
+        }
+
+      }
+    }
+    // dd($image_name);複数枚画像name取得完了
+      Cloudder::upload($image_name[$i], $image_file[$i]);
+      $publicId[$i] = Cloudder::getPublicId();
+      $logoUrl = Cloudder::show($publicId[$i], [
+        'width'     => 120,
+        'height'    => 120
+        ]);
+
+        $image->name = $logoUrl;
+
+        $image->save();
+        $i++;
+  }
+}
+
+
+
+
     // dd($logoUrl);
     // dd($request);
 
@@ -82,6 +128,7 @@ $group_id = $_POST['group_id'];
       foreach($posts as $post) {
         $searchpost[] = Image::where('post_id', $post->id)->get();
       }
+
       return view('posts.store.index', compact('posts', 'searchpost'));
 
 

@@ -23,6 +23,7 @@
     {{ $group_id = $post->group_id }}
     @if ($searchpost[$i][0]->name)
     <img src="{{$searchpost[$i][0]->name}}" alt="">
+
     {{ $searchpost[$i][0]->name }}
     @endif
   {{ $i++ }}

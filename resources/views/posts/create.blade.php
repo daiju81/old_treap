@@ -13,8 +13,8 @@
   @csrf
   <div>
   <label for="image">画像ファイル（複数可）:</label>
-    <!-- <input type="file" class="form-control" name="files[][image]" multiple> -->
-    <input type="file" name="image">
+    <input type="file" class="form-control" name="files[][image]" multiple>
+    <!-- <input type="file" name="image"> -->
 
 
  投稿メッセージ
@@ -31,7 +31,7 @@
   {!! Form::close() !!}
 
   </form>
-
+  <a class="" href="/">ユーザーページ</a>
 
 </body>
 </html>

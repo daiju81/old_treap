@@ -80,7 +80,7 @@
 
 
 
-
+@if(isset($groupdetails))
                       @foreach($groupdetails as $group)
                         <div class="row py-2 border-bottom text-center">
                             <div class="col-sm-4">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                       @endforeach
-
+@endif
                         <!-- <a href="{{ url('/groups/search') }}">Group</a> -->
 
                     @else

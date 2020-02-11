@@ -35,10 +35,11 @@ class GroupController extends Controller
       // return redirect('group/{{$group->id}}');
       // dd($group->id);
 
-      return redirect()->route('groups.done', [$group->id]);
+      return redirect('/');
     }
 
     public function done($group_id) {
+      return redirect('/');
 
     }
 
