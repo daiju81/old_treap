@@ -44,8 +44,8 @@
   <a href="{{ url('groups', $group_id)}}">グループメニューに戻る</a>
   <a href="/">グループ一覧に戻る</a>
   <a href="/slide/{{$group_id}}">スライドショー</a>
-  <a href="/">画像一覧</a>
-  <a href="/">アルバム</a>
+  <a href="/images">画像一覧</a>
+  <a href="/album/{{$group_id}}">アルバム</a>
 
 
 </body>

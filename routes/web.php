@@ -37,3 +37,4 @@ Route::get('/groups/done', 'GroupController@done');
 Route::get('/groupmembers/add', 'GroupMemberController@add');
 Route::get('/groupmembers/add/{group_id}', 'GroupMemberController@store');
 Route::get('/slide/{group_id}', 'SlideController@index');
+Route::get('/album/{group_id}', 'AlbumController@index');
