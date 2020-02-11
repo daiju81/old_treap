@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-
+</head>
+<body>
   {{$i = 0}}
 
   @foreach($posts as $post)
@@ -33,7 +34,10 @@
     <input type=hidden name="group_id" value="{{ $group_id }}">
   </form>
 
-</head>
-<body>
+
+<a href="/">グループ一覧に戻る</a>
+<a href="/">スライドショー</a>
+  <a href="/">画像一覧</a>
+  <a href="/">アルバム</a>
 </body>
 </html>
