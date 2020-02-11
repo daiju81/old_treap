@@ -43,7 +43,7 @@
   </form>
   <a href="{{ url('groups', $group_id)}}">グループメニューに戻る</a>
   <a href="/">グループ一覧に戻る</a>
-  <a href="/">スライドショー</a>
+  <a href="/slide/{{$group_id}}">スライドショー</a>
   <a href="/">画像一覧</a>
   <a href="/">アルバム</a>
 
